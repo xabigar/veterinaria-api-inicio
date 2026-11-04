@@ -14,7 +14,8 @@ router.post('/', async (req, res, next) => {
 //    - Si solo llega uno de los parámetros, usar solo ese
 //    - Si no llega ninguno, todos los veterinarios (¡un $or vacío da error!)
 //    - Pista: { availableDays: 'lunes' } busca dentro del array
-//    - Convierte cada parámetro con String() (inyección NoSQL)
+  //    - Convierte cada parámetro a texto con String(): así nadie puede colar un objeto
+  //      (por ejemplo { $ne: null }) en el filtro (inyección NoSQL)
 router.get('/', async (req, res, next) => {
   // TODO
   res.status(501).json({ error: 'Sin implementar' });
